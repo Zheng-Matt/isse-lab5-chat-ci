@@ -310,7 +310,7 @@ def delete_message(message_id):
         return jsonify({"error": "聊天记录不存在"}), 404
 
     conversation, index, _ = result
-    del conversation["messages"][index]
+    del conversation["messages"][index + 1]
     if (
         index < len(conversation["messages"])
         and conversation["messages"][index]["role"] == "assistant"
