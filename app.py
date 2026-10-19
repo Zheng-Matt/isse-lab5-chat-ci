@@ -13,7 +13,9 @@ load_dotenv()
 app = Flask(__name__, static_folder="frontend", static_url_path="")
 app.json.ensure_ascii = False
 
-DATA_FILE = Path(__file__).resolve().parent / "data" / "conversations.json"
+DEFAULT_DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_DIR = Path(os.environ.get("LAB5_DATA_DIR", str(DEFAULT_DATA_DIR)))
+DATA_FILE = DATA_DIR / "conversations.json"
 
 
 def load_conversations():
