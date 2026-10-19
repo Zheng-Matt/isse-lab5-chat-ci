@@ -11,7 +11,8 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    runs-on: [self-hosted, macOS, ARM64]
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
